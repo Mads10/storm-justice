@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="10" height="13" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="34">
+ <tileset firstgid="1" source="shopTileset.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="10" height="13">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+63,64,63,63,64,63,64,64,63,64,
+35,35,35,35,35,35,35,35,35,35,
+35,35,35,35,35,35,35,35,35,35,
+2,2,2,2,2,2,2,2,2,2,
+41,42,2,2,2,2,2,2,42,54,
+49,50,2,53,53,53,53,2,50,2,
+57,2,2,38,38,38,38,2,2,2,
+2,2,2,2,2,2,2,2,2,2,
+42,41,2,2,2,2,2,42,41,13,
+50,49,2,2,2,2,2,50,49,21,
+2,57,55,56,55,56,55,56,57,29
+</data>
+ </layer>
+ <objectgroup id="3" name="collisions">
+  <object id="15" x="0.756659" y="391.192" width="127.119" height="169.492"/>
+  <object id="16" x="193.705" y="455.508" width="254.237" height="118.039"/>
+  <object id="18" x="513.015" y="387.409" width="127.875" height="124.092"/>
+  <object id="20" x="-0.756659" y="642.403" width="129.389" height="188.408"/>
+  <object id="21" x="129.389" y="789.952" width="380.599" height="46.9128"/>
+  <object id="22" x="447.185" y="647.7" width="188.408" height="182.355"/>
+  <object id="24" x="0.756659" y="134.685" width="638.62" height="55.2361"/>
+  <object id="27" x="16.6465" y="730.176" width="90.0424" height="88.5291">
+   <ellipse/>
+  </object>
+  <object id="28" x="514.528" y="720.339">
+   <polygon points="0,0 119.552,-1.51332 121.065,109.715 -3.02663,109.715"/>
+  </object>
+  <object id="30" x="-2.66667" y="0" width="5.33333" height="832"/>
+  <object id="31" x="-1.33333" y="826.667" width="642.667" height="6.66667"/>
+  <object id="32" x="637.333" y="1.33333" width="9.33333" height="830.667"/>
+  <object id="33" x="0" y="0" width="641.333" height="132"/>
+ </objectgroup>
+</map>

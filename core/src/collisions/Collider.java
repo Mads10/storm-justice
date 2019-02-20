@@ -21,11 +21,12 @@ public abstract class Collider {
 	public static Collider createCollider(MapObject object) throws IllegalStateException {
 		if (object instanceof RectangleMapObject) {
 			return new RectangleCollider(object);
-		} else if (object instanceof CircleMapObject) {
+		} else if (object instanceof EllipseMapObject) {
 			return new CircleCollider(object);
 		} else if (object instanceof PolygonMapObject) {
 			return new PolygonCollider(object);
 		} else {
+			System.out.println(object.getClass());
 			throw new IllegalStateException("The type of collider object is not supported.");
 		}
 	}

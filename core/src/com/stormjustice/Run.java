@@ -1,28 +1,39 @@
 package com.stormjustice;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import main.Controls;
-import main.Player;
-import main.SimRender;
+import screen.Level1Screen;
+import screen.Menu;
+import screen.Settings;
+import screen.ShopScreen;
 
 public class Run extends Game{
 
 	
-
+	public static final int WIDTH = 1280, Height = 720;
 	//creation of all the command objects
-	private SimRender render;
+	public SpriteBatch batch;
+    Texture img;
+    private Game game;
+    public static AssetManager manager;
 	
 	public Run() {
-		render = new SimRender();
 	}
 	
 	@Override
 	public void create () {
-		setScreen(render);
+//		setScreen(render);
+		game = this;
+		batch = new SpriteBatch();
+		this.setScreen(new Menu(this));
+		
+		manager = new AssetManager();
+		manager.load("music.mp3", Music.class);
+		manager.finishLoading();
 	}
 	
 	
@@ -34,7 +45,6 @@ public class Run extends Game{
 	@Override
 	public void render () {
 		super.render();
-		render.render(Gdx.graphics.getDeltaTime());
 	}
 	
 	public void resize(int width, int height) {
@@ -47,6 +57,35 @@ public class Run extends Game{
 	
 	public void resume() {
 		super.resume();
+	}
+	
+    public void Level1Screen() {
+      	Level1Screen lvl1 = new Level1Screen(this);
+        setScreen(lvl1);
+    	
+    }
+    public void MainMenuScreen() {
+    	Menu menu = new Menu(this);
+        setScreen(menu);
+    	
+    }
+    
+    public void SettingsScreen() {
+	    Settings set = new Settings(this);
+	    setScreen(set);
+    }
+    
+    public void ShopScreen() {
+    	ShopScreen shop = new ShopScreen(this);
+    	setScreen(shop);
+    }
+
+	public SpriteBatch getBatch() {
+		return batch;
+	}
+
+	public void setBatch(SpriteBatch batch) {
+		this.batch = batch;
 	}
 
 	private void next(){

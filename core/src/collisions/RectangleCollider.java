@@ -28,6 +28,14 @@ public class RectangleCollider extends Collider {
 	}
 	
 	/**
+	 * Create a RectangleCollider given a rectangle.
+	 * @param rect
+	 */
+	public RectangleCollider(Rectangle rect) {
+		setColliderShape(rect);
+	}
+	
+	/**
 	 * Check if this collider intersects with the given rectangle.
 	 * @param rectangle
 	 * @return

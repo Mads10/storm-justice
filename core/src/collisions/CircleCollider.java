@@ -5,13 +5,17 @@ import com.badlogic.gdx.maps.objects.*;
 import com.badlogic.gdx.math.*;
 
 public class CircleCollider extends Collider {
+	/*
+	 * Tiled uses ellipse not circles. Change class.
+	 */
+	
 	
 	/**
 	 * Create a CircleCollider given a mapObject;
 	 * @param object
 	 */
 	public CircleCollider(MapObject object) {
-		Circle circle = ((CircleMapObject) object).getCircle();
+		Ellipse circle = ((EllipseMapObject) object).getEllipse();
 		setColliderShape(circle);
 	}
 	

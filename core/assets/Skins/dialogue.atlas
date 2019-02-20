@@ -1,0 +1,20 @@
+
+dialogue.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dialogue-box
+  rotate: false
+  xy: 1, 160
+  size: 256, 95
+  orig: 256, 95
+  offset: 0, 0
+  index: -1
+dialogue-box-hover
+  rotate: false
+  xy: 1, 63
+  size: 256, 95
+  orig: 256, 95
+  offset: 0, 0
+  index: -1
