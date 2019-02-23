@@ -1,19 +1,22 @@
 package items;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-public class Sword implements Item{
+public class HealthItem implements Item {
 	
 	public Texture texture;
 	public Sprite sprite;
 
-	public Sword(float X, float Y, String textureFilePath) {
-		// TODO Auto-generated constructor stub
+	
+	public HealthItem(int X, int Y, String textureFilePath) {
 		texture = new Texture(textureFilePath);
 		sprite = new Sprite(texture);
 		this.sprite.setPosition(X, Y);
 	}
+
 
 	@Override
 	public Texture getTexture() {
@@ -37,6 +40,14 @@ public class Sword implements Item{
 	public void setSprite(Sprite sprite) {
 		// TODO Auto-generated method stub
 		this.sprite = sprite;
+	}
+
+
+	@Override
+	public void createItem(ArrayList<Item> list, int x, int y, String filePath) {
+		// TODO Auto-generated method stub
+		list.add(new HealthItem(x, y, filePath));
+		
 	}
 
 }
