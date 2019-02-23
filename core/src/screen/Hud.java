@@ -39,6 +39,10 @@ public class Hud {
 	public void reduceHealth(float hitValue) {
 		health.setValue(health.getValue() - hitValue);
 	}
+	
+	public void addHealth(float addValue) {
+		health.setValue(health.getValue() + addValue);
+	}
 
 	public float getHealth() {
 		return health.getValue();

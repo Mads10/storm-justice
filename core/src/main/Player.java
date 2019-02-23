@@ -14,9 +14,10 @@ import com.badlogic.gdx.math.Vector2;
 import actors.Enemy;
 import actors.NPC;
 import map.Map;
-
+import screen.Hud;
 import collisions.RayCast;
 import collisions.RectangleCollider;
+import items.HealthItem;
 
 public class Player extends Sprite{
 	
@@ -234,6 +235,14 @@ public class Player extends Sprite{
 	public void attack(Enemy enemy) {
 		if (enemy.getSprite().getBoundingRectangle().overlaps(this.getSprite().getBoundingRectangle())) {
 			enemy.setHealth(enemy.getHealth() - 25);
+		}
+	}
+	
+	public void heal(HealthItem hItem, Hud h, float healValue) {
+		if (hItem.getSprite().getBoundingRectangle().overlaps(this.getSprite().getBoundingRectangle())) {
+			this.setHealth(this.getHealth()+ healValue);
+			h.addHealth(healValue);
+			h.getHealth();
 		}
 	}
 

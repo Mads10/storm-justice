@@ -26,6 +26,7 @@ import actors.NPC;
 import actors.OldManNPC;
 import actors.Postcard;
 import items.Coin;
+import items.HealthItem;
 import items.Item;
 import main.Player;
 import map.Map;
@@ -37,6 +38,8 @@ public class Level1Screen implements Screen{
 	Enemy enemy1;
 	Enemy enemy2;
 	Enemy enemy3;
+	 
+	HealthItem hItem;
 	
 	NPC  npc;
 	Map map;
@@ -47,8 +50,6 @@ public class Level1Screen implements Screen{
 	private ArrayList<Item> itemList = new ArrayList<Item>();
 	private ArrayList<Actor> actorList = new ArrayList<Actor>();
 	
-	private Coin coin;
-	
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
 	
@@ -57,19 +58,16 @@ public class Level1Screen implements Screen{
 	private int TEN2 = 10;
 	
 	private boolean paused;
-	
-	private Stage stage;
+
 	private Run game;
 	
 	private static Texture pausedPng;
 	private static Sprite pause;
-	private Viewport viewPort;
 	private Hud hud;
 	
 	private Music music;
 	private SpriteBatch batch;
 	
-	private HealthBar healthBar;
 	
 	public Level1Screen(final Run game) {
 		this.game = game;
@@ -116,7 +114,7 @@ public class Level1Screen implements Screen{
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		renderer.setView(camera);
 		renderer.render();
-		//batch.setProjectionMatrix(hud.stage.getCamera().combined);
+
 		hud.stage.draw();
 		
 		//Renders Player
@@ -161,7 +159,7 @@ public class Level1Screen implements Screen{
 			showingDialogue = npc.showDialogue();
 			while(ONE == 1) {
 				actorList.remove(npc);
-				createCoins(); 
+				createItems(); 
 				actorList.add(enemy1 = new  Enemy(100, 100, 0, "coin", "Enemy1.png"));
 				ONE--;
 			}
@@ -192,6 +190,9 @@ public class Level1Screen implements Screen{
 					}
 				}
 			}
+			if (itemList.contains(hItem)) {
+				player.heal(hItem, hud, 0.5f);
+			}	
 		}
 		
 		itemCollision(player, itemList);
@@ -251,16 +252,17 @@ public class Level1Screen implements Screen{
 	}
 	
 	
-	//Creates coins
-	//Can be moved to Item class, but would need to remove random and list of items (e.g. coinList)
-	public void createCoins() {
-//			while (!(numberOfCoins < 0 )) {
-//				float tempX = (float) Math.random() * maxX ;
-//				float tempY = (float) Math.random() * maxY;
-//				itemList.add(new Item(tempX, tempY, "coin.png"));
-//				numberOfCoins--;
-//			}
-			itemList.add(new Coin(100, 250, "coin.png"));
+	//Creates items
+	public void createItems() {
+		
+//		coin.createItem(itemList, 100, 250, "coin.png");
+//		coin.createItem(itemList, 228, 250, "coin.png");
+//		coin.createItem(itemList, 356, 250, "coin.png");
+//		coin.createItem(itemList, 484, 250, "coin.png");
+//		coin.createItem(itemList, 575, 250, "coin.png");
+//		coin.createItem(itemList, 575, 378, "coin.png");
+//		coin.createItem(itemList, 575, 506, "coin.png");
+//		coin.createItem(itemList, 575, 634, "coin.png");
 			
 			itemList.add(new Coin(228, 250, "coin.png"));
 
@@ -275,6 +277,8 @@ public class Level1Screen implements Screen{
 			itemList.add(new Coin(575, 506, "coin.png"));
 			
 			itemList.add(new Coin(575, 634, "coin.png"));
+			
+			itemList.add(hItem = new HealthItem(575 , 200, "healthItem.png"));
 	}
 	
 	//Item Collision

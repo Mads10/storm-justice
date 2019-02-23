@@ -1,5 +1,7 @@
 package items;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
@@ -17,26 +19,28 @@ public class Coin implements Item {
 
 	@Override
 	public Texture getTexture() {
-		// TODO Auto-generated method stub
 		return texture;
 	}
 
 	@Override
 	public void setTexture(Texture texture) {
-		// TODO Auto-generated method stub
 		this.texture = texture;
 	}
 
 	@Override
 	public Sprite getSprite() {
-		// TODO Auto-generated method stub
 		return sprite;
 	}
 
 	@Override
 	public void setSprite(Sprite sprite) {
-		// TODO Auto-generated method stub
 		this.sprite = sprite;
+	}
+
+	@Override
+	public void createItem(ArrayList<Item> list, int x, int y, String filePath) {
+		list.add(new Coin(x, y, filePath));
+		
 	}
 
 }
