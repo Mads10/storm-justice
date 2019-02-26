@@ -8,6 +8,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6/"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/libgdx"/>
+	<classpathentry kind="lib" path="/Users/madhatabdullah/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.8/d92b5b8beab10e3b3c0dd836d4fc186f95e7ea4b/gdx-freetype-1.9.8.jar" sourcepath="/Users/madhatabdullah/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.8/a16774d14a95c8e45b9ae4cd3f2d7450fa1f7c94/gdx-freetype-1.9.8-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

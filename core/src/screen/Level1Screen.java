@@ -57,12 +57,11 @@ public class Level1Screen implements Screen{
 	private int TEN = 10;
 	private int TEN2 = 10;
 	
-	private boolean paused;
+	private boolean paused = false;
+	private Pause pausescreen;
 
 	private Run game;
 	
-	private static Texture pausedPng;
-	private static Sprite pause;
 	private Hud hud;
 	
 	private Music music;
@@ -87,9 +86,7 @@ public class Level1Screen implements Screen{
 		music.setVolume(0.3f);
 		music.play();
 		
-		pausedPng = new Texture(Gdx.files.internal("Pause.png"));
-		pause = new Sprite(pausedPng);
-		pause.flip(false,true);
+		pausescreen = new Pause(game, this);
 
 
 	}
@@ -108,6 +105,19 @@ public class Level1Screen implements Screen{
 
 	@Override
 	public void render(float delta) {
+		if(paused) {
+			pauseLogic(delta);
+		} else {
+			gameLogic(delta);
+		}
+	}
+	
+
+	public void pauseLogic(float delta) {
+		pausescreen.render(delta);
+	}
+	
+	public void gameLogic(float delta) {
 		// TODO Auto-generated method stub
 		//Renders window and map
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -128,9 +138,7 @@ public class Level1Screen implements Screen{
 		
 		//player.draw(renderer.getBatch());
 		player.getSprite().draw(renderer.getBatch());
-		if(paused) {
-			renderer.getBatch().draw(pausedPng, player.getSprite().getX() - 250, player.getSprite().getY() -300);
-		}
+		
 		
 		for (int i = 0; i < itemList.size(); i++) {
 			itemList.get(i).getSprite().draw(renderer.getBatch());
@@ -144,16 +152,9 @@ public class Level1Screen implements Screen{
 		camera.update();
 		
 		if (Gdx.input.isKeyPressed(Keys.P)){
-				if(!paused) {
-					pause();
+			paused = true;
 				} 
-		}
 		
-		if (Gdx.input.isKeyPressed(Keys.U)) {
-			if(paused){
-				paused = false;
-			}		
-		}
 		
 		if (showingDialogue) {
 			showingDialogue = npc.showDialogue();
@@ -199,7 +200,15 @@ public class Level1Screen implements Screen{
 		changeLevel(8);
 		
 	}
-
+		
+	
+	
+	public void unpause() {
+		paused = false;
+	}
+	
+	
+	
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
@@ -214,13 +223,7 @@ public class Level1Screen implements Screen{
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		paused = true; 
-		System.out.println("Paused");
-		try {
-			Thread.sleep(100);
-		} catch(InterruptedException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	@Override
